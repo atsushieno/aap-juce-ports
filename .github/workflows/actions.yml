@@ -27,7 +27,7 @@ jobs:
                  libpng-dev libstdc++6 libwebkit2gtk-4.0-dev libx11-6 \
                  libxext6 zlib1g  make g++ mesa-common-dev libasound2-dev \
                  libjack-jackd2-dev ladspa-sdk \
-                 doxygen liblilv-dev
+                 doxygen libgrpc++-dev libgrpc-dev libprotobuf-dev graphviz cmake ninja-build
     - name: stupid NDK setup workaround for GitHub Actions
       run: sudo mkdir -p /usr/local/lib/android/sdk/ndk && sudo chmod 777 /usr/local/lib/android/sdk/ndk
     - name: build
@@ -60,7 +60,7 @@ jobs:
         java-version: 1.8
     - name: install deps
       run: |
-        brew install doxygen pkg-config cmake lilv coreutils
+        brew install doxygen pkg-config cmake coreutils ninja graphviz
     - name: build
       run: make MINIMIZE_INTERMEDIATES=1
       env:
