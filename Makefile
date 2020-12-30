@@ -44,7 +44,7 @@ $(PROJUCER_BIN_DARWIN):
 
 .PHONY:
 build-aap:
-	cd external/android-audio-plugin-framework && make MINIMIZE_INTERMEDIATES=$(MINIMIZE_INTERMEDIATES) build-no-desktop
+	cd external/android-audio-plugin-framework && make MINIMIZE_INTERMEDIATES=$(MINIMIZE_INTERMEDIATES) all-no-desktop
 
 .PHONY:
 build-samples: build-audiopluginhost build-andes build-sarah build-magical8bitplug2 build-dexed build-obxd build-opnplug
