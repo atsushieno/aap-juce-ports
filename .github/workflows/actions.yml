@@ -38,7 +38,7 @@ jobs:
     - name: stupid NDK setup workaround for GitHub Actions
       run: sudo mkdir -p /usr/local/lib/android/sdk/ndk && sudo chmod 777 /usr/local/lib/android/sdk/ndk
     - name: workaround for https://github.com/actions/virtual-environments/issues/2228
-      run: echo cmake.dir=/usr > java/local.properties
+      run: echo cmake.dir=/usr > local.properties
     - name: build
       run: xvfb-run -a --server-args="-screen 0 1280x800x24 -ac -nolisten tcp -dpi 96 +extension RANDR" make MINIMIZE_INTERMEDIATES=1 build dist
     - name: upload-artifact
@@ -70,7 +70,7 @@ jobs:
       run: |
         brew install doxygen pkg-config cmake coreutils ninja graphviz
     - name: workaround for https://github.com/actions/virtual-environments/issues/2228
-      run: echo cmake.dir=/usr/local > java/local.properties
+      run: echo cmake.dir=/usr/local > local.properties
     - name: build
       run: make MINIMIZE_INTERMEDIATES=1 build dist
       env:
