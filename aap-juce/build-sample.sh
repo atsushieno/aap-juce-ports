@@ -17,6 +17,7 @@ MACAPPNAME=$APPNAME
 fi
 
 
+
 if [ -d $ANDROID_SDK_OVERRIDE ] ; then
     echo "ANDROID_SDK_OVERRIDE: $ANDROID_SDK_OVERRIDE"
     ANDROID_SDK_ROOT=$ANDROID_SDK_OVERRIDE
@@ -34,6 +35,8 @@ if ! [ -f $1 ] ; then
     echo "Missing .jucer file (or it does not exist)."
     exit 2
 fi
+
+echo "build-sample.sh: APPNAME: $APPNAME / MAPAPPNAME: $MACAPPNAME / GRADLE_TASK: $GRADLE_TASK"
 
 SRCFILE=`$READLINK -f $1` >/dev/null
 SRCDIR=`dirname $SRCFILE` >/dev/null
@@ -54,9 +57,9 @@ fi
 
 if [ `uname` == 'Darwin' ] ; then
 if [ $APPNAME == 'AudioPluginHost' ] ; then
-	pushd . && cd Builds/MacOSX && xcodebuild -project $APPNAME.xcodeproj && popd || exit 4
+	pushd . && cd Builds/MacOSX && xcodebuild -project "$APPNAME.xcodeproj" && popd || exit 4
 else
-	pushd . && cd Builds/MacOSX && xcodebuild -project $MACAPPNAME.xcodeproj -target "$APPNAME - Shared Code" && popd || exit 4
+	pushd . && cd Builds/MacOSX && xcodebuild -project "$MACAPPNAME.xcodeproj" -target "$APPNAME - Shared Code" && popd || exit 4
 fi
 else
 	make -C Builds/LinuxMakefile || exit 4
@@ -86,8 +89,8 @@ echo "sdk.dir=$ANDROID_SDK_ROOT" > $SRCDIR/Builds/Android/local.properties
 cd Builds/Android && ./gradlew $GRADLE_TASK && cd ../.. || exit 1
 
 if [ $MINIMIZE_INTERMEDIATES ] ; then
-    rm -rf Builds/Android/app/build/intermediates/
-    rm -rf Builds/Android/app/.cxx
+    rm -rf Builds/Android/app/build/intermediates/ ;
+    rm -rf Builds/Android/app/.cxx ;
     rm -rf Builds/LinuxMakefile/build/intermediates/
 fi
 
