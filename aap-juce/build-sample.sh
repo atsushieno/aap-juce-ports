@@ -47,7 +47,9 @@ $PROJUCER --resave `basename $1` || exit 1
 
 # If a top-level `local.properties` exists, then copy it into the generated Android project.
 if [ -f ../../local.properties ] ; then
-	cp ../../local.properties Builds/Android || exit 1
+	cp ../../local.properties Builds/Android/ || exit 1
+else
+	echo "build-sample.sh: building '`basename $1`' without local.properties."
 fi
 
 if [ `uname` == 'Darwin' ] ; then
