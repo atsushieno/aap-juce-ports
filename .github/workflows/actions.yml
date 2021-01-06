@@ -34,7 +34,9 @@ jobs:
                  libpng-dev libstdc++6 libwebkit2gtk-4.0-dev libx11-6 \
                  libxext6 zlib1g  make g++ mesa-common-dev libasound2-dev \
                  libjack-jackd2-dev ladspa-sdk \
-                 doxygen libgrpc++-dev libgrpc-dev libprotobuf-dev graphviz cmake ninja-build
+                 doxygen libgrpc++-dev libgrpc-dev \
+                 libprotobuf-dev protobuf-compiler protobuf-compiler-grpc \
+                 graphviz cmake ninja-build
     - name: stupid NDK setup workaround for GitHub Actions
       run: sudo mkdir -p /usr/local/lib/android/sdk/ndk && sudo chmod 777 /usr/local/lib/android/sdk/ndk
     - name: workaround for https://github.com/actions/virtual-environments/issues/2228
@@ -70,7 +72,7 @@ jobs:
         key: ndk_r21c_osx
     - name: install deps
       run: |
-        brew install doxygen pkg-config cmake coreutils ninja graphviz
+        brew install doxygen pkg-config cmake coreutils ninja graphviz grpc
     - name: workaround for https://github.com/actions/virtual-environments/issues/2228
       run: echo cmake.dir=/usr/local > local.properties
     - name: in AAP core, workaround for https://github.com/actions/virtual-environments/issues/2228
