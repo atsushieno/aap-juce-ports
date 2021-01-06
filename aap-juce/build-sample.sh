@@ -46,7 +46,7 @@ $PROJUCER --resave `basename $1` || exit 1
 # mv JuceLibraryCode/tmpcfg.txt JuceLibraryCode/AppConfig.h || exit 3
 
 # If a top-level `local.properties` exists, then copy it into the generated Android project.
-if [ -f local.properties ] ; then
+if [ -f ../../local.properties ] ; then
 	cp local.properties Builds/Android
 fi
 
