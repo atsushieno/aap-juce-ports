@@ -47,37 +47,17 @@ build-aap:
 	cd external/android-audio-plugin-framework && make MINIMIZE_INTERMEDIATES=$(MINIMIZE_INTERMEDIATES)
 
 .PHONY:
-build-samples: build-audiopluginhost build-andes build-sarah build-magical8bitplug2 build-dexed build-obxd build-opnplug
+build-samples: build-andes build-sarah build-magical8bitplug2 build-dexed build-obxd build-opnplug
 
 .PHONY:
 dist:
 	mkdir -p release-builds
-	mv  apps/AudioPluginHost/Builds/Android/app/build/outputs/apk/release_/release/app-release_-release.apk  release-builds/AudioPluginHost-release.apk
 	mv  apps/andes/Builds/Android/app/build/outputs/apk/release_/release/app-release_-release.apk   release-builds/andes-release.apk
 	mv  apps/SARAH/Builds/Android/app/build/outputs/apk/release_/release/app-release_-release.apk   release-builds/SARAH-release.apk
 	mv  apps/dexed/Builds/Android/app/build/outputs/apk/release_/release/app-release_-release.apk  release-builds/dexed-release.apk
 	mv  apps/Magical8bitPlug2/Builds/Android/app/build/outputs/apk/release_/release/app-release_-release.apk  release-builds/Magical8bitPlug2-release.apk
 	mv  apps/OB-Xd/Builds/Android/app/build/outputs/apk/release_/release/app-release_-release.apk  release-builds/OB-Xd-release.apk
 	mv  apps/OPNplug/Builds/Android/app/build/outputs/apk/release_/release/app-release_-release.apk  release-builds/OPNplug-release.apk
-
-
-.PHONY:
-build-audiopluginhost: create-patched-pluginhost do-build-audiopluginhost
-.PHONY:
-do-build-audiopluginhost:
-	echo "PROJUCER is at $(PROJUCER_BIN)"
-	NDK_VERSION=$(NDK_VERSION) APPNAME=AudioPluginHost PROJUCER=$(PROJUCER_BIN) ANDROID_SDK_ROOT=$(ANDROID_SDK_ROOT) SKIP_METADATA_GENERATOR=1 GRADLE_TASK=$(GRADLE_TASK) aap-juce/build-sample.sh apps/AudioPluginHost/AudioPluginHost.jucer
-
-.PHONY:
-create-patched-pluginhost: apps/AudioPluginHost/.stamp 
-
-apps/AudioPluginHost/.stamp: \
-		external/JUCE/extras/AudioPluginHost/** \
-		apps/juceaaphost.patch \
-		apps/override.AudioPluginHost.jucer \
-		aap-juce/sample-project.*
-	aap-juce/create-patched-juce-app.sh  AudioPluginHost  external/JUCE/extras/AudioPluginHost \
-		apps/AudioPluginHost  ../juceaaphost.patch  3  apps/override.AudioPluginHost.jucer
 
 
 .PHONY:
