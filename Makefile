@@ -47,17 +47,15 @@ build-aap:
 	cd external/android-audio-plugin-framework && make MINIMIZE_INTERMEDIATES=$(MINIMIZE_INTERMEDIATES)
 
 .PHONY:
-build-samples: build-andes build-sarah build-magical8bitplug2 build-dexed build-obxd build-opnplug
+build-samples: build-andes build-sarah build-magical8bitplug2 build-obxd
 
 .PHONY:
 dist:
 	mkdir -p release-builds
 	mv  apps/andes/Builds/Android/app/build/outputs/apk/release_/release/app-release_-release.apk   release-builds/andes-release.apk
 	mv  apps/SARAH/Builds/Android/app/build/outputs/apk/release_/release/app-release_-release.apk   release-builds/SARAH-release.apk
-	mv  apps/dexed/Builds/Android/app/build/outputs/apk/release_/release/app-release_-release.apk  release-builds/dexed-release.apk
 	mv  apps/Magical8bitPlug2/Builds/Android/app/build/outputs/apk/release_/release/app-release_-release.apk  release-builds/Magical8bitPlug2-release.apk
 	mv  apps/OB-Xd/Builds/Android/app/build/outputs/apk/release_/release/app-release_-release.apk  release-builds/OB-Xd-release.apk
-	mv  apps/OPNplug/Builds/Android/app/build/outputs/apk/release_/release/app-release_-release.apk  release-builds/OPNplug-release.apk
 
 
 .PHONY:
@@ -109,21 +107,6 @@ apps/Magical8bitPlug2/.stamp: \
 		apps/Magical8bitPlug2  ../magical8bitplug2-aap.patch  1  apps/override.Magical8bitPlug2.jucer
 
 .PHONY:
-build-dexed: create-patched-dexed do-build-dexed
-.PHONY:
-do-build-dexed:
-	echo "PROJUCER is at $(PROJUCER_BIN)"
-	MINIMIZE_INTERMEDIATES=$(MINIMIZE_INTERMEDIATES) NDK_VERSION=$(NDK_VERSION) APPNAME=Dexed PROJUCER=$(PROJUCER_BIN) ANDROID_SDK_ROOT=$(ANDROID_SDK_ROOT) GRADLE_TASK=$(GRADLE_TASK) aap-juce/build-sample.sh apps/dexed/Dexed.jucer
-.PHONY:
-create-patched-dexed: apps/dexed/.stamp 
-apps/dexed/.stamp: \
-		external/dexed/** \
-		apps/override.Dexed.jucer \
-		aap-juce/sample-project.*
-	aap-juce/create-patched-juce-app.sh  Dexed  external/dexed \
-		apps/dexed  -  -  apps/override.Dexed.jucer
-
-.PHONY:
 build-obxd: create-patched-obxd do-build-obxd
 .PHONY:
 do-build-obxd:
@@ -138,22 +121,5 @@ apps/OB-Xd/.stamp: \
 		aap-juce/sample-project.*
 	aap-juce/create-patched-juce-app.sh  OB_Xd  external/OB-Xd \
 		apps/OB-Xd  ../obxd-aap.patch  1  apps/override.OB-Xd.jucer
-
-# OPNplug is part of ADLplug, so the build script would look somewhat different
-.PHONY:
-build-opnplug: create-patched-opnplug do-build-opnplug
-.PHONY:
-do-build-opnplug:
-	echo "PROJUCER is at $(PROJUCER_BIN)"
-	NDK_VERSION=$(NDK_VERSION) APPNAME=OPNplug PROJUCER=$(PROJUCER_BIN) ANDROID_SDK_ROOT=$(ANDROID_SDK_ROOT) GRADLE_TASK=$(GRADLE_TASK) aap-juce/build-sample.sh apps/OPNplug/OPNplug.jucer
-.PHONY:
-create-patched-opnplug: apps/OPNplug/.stamp 
-apps/OPNplug/.stamp: \
-		external/ADLplug/** \
-		apps/opnplug-aap.patch \
-		apps/override.OPNplug.jucer \
-		aap-juce/sample-project.*
-	aap-juce/create-patched-juce-app.sh  OPNplug  external/ADLplug \
-		apps/OPNplug  ../opnplug-aap.patch  1  apps/override.OPNplug.jucer
 
 
