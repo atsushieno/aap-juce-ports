@@ -30,6 +30,9 @@ cp $CURDIR/sample-project.settings.gradle Builds/Android/settings.gradle
 # There is no way to generate this in Projucer.
 cp $CURDIR/sample-project.gradle.properties Builds/Android/gradle.properties
 
+# Only Android Studio 2020.3.1 Canary comes with working debugger ATM.
+cp $CURDIR/sample-project.gradle-wrapper.properties Builds/Android/gradle/wrapper/gradle-wrapper.properties
+
 # Projucer is too inflexible to generate required content.
 cp $CURDIR/sample-project.build.gradle Builds/Android/build.gradle
 
