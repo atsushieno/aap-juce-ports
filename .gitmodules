@@ -24,3 +24,7 @@
 [submodule "external/OB-Xd"]
 	path = external/OB-Xd
 	url = https://github.com/reales/OB-Xd.git
+[submodule "aap-juce"]
+	path = aap-juce
+	url = https://github.com/atsushieno/aap-juce.git
+	branch = new-repo-structure
