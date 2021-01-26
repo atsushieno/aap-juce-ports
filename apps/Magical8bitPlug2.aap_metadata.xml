@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugins>
+  <plugin name="Magical 8bit Plug 2" category="Synth" author="Ymck" manufacturer="http://ymck.net"
+          unique-id="juceaap:73796e6a" library="libjuce_jni.so" entrypoint="GetJuceAAPFactory"
+          assets="">
+    <ports>
+      <port name="Advanced" direction="input" default="0.0" maximum="1.0"
+            content="other"/>
+      <port name="Color Scheme" direction="input" default="0.0" maximum="5.0"
+            content="other"/>
+      <port name="OSC Type" direction="input" default="0.0" maximum="2.0"
+            content="other"/>
+      <port name="Gain" direction="input" maximum="1.0" content="other"/>
+      <port name="Max Poly" direction="input" minimum="1.0" maximum="64.0"
+            content="other"/>
+      <port name="Attack" direction="input" default="0.0" maximum="5.0" content="other"/>
+      <port name="Decay" direction="input" default="0.0" maximum="5.0" content="other"/>
+      <port name="Sustain" direction="input" maximum="1.0" content="other"/>
+      <port name="Release" direction="input" default="0.0" maximum="5.0"
+            content="other"/>
+      <port name="Enabled" direction="input" default="0.0" maximum="1.0"
+            content="other"/>
+      <port name="Time" direction="input" maximum="0.300000011920929" content="other"/>
+      <port name="Direction" direction="input" default="0.0" maximum="1.0"
+            content="other"/>
+      <port name="Bend Range" direction="input" maximum="24.0" content="other"/>
+      <port name="Rate" direction="input" minimum="0.009999999776482582"
+            maximum="1.0" content="other"/>
+      <port name="Depth" direction="input" default="0.0" maximum="2.0" content="other"/>
+      <port name="Delay" direction="input" maximum="1.0" content="other"/>
+      <port name="Ignores Wheel" direction="input" maximum="1.0" content="other"/>
+      <port name="Ini.Pitch" direction="input" minimum="-24.0" maximum="24.0"
+            content="other"/>
+      <port name="Time" direction="input" minimum="0.009999999776482582"
+            maximum="5.0" content="other"/>
+      <port name="Duty" direction="input" default="0.0" maximum="2.0" content="other"/>
+      <port name="Algorithm" direction="input" default="0.0" maximum="2.0"
+            content="other"/>
+      <port name="Restricts to NES frequency" direction="input" default="0.0"
+            maximum="1.0" content="other"/>
+      <port name="Enabled" direction="input" default="0.0" maximum="1.0"
+            content="other"/>
+      <port name="Enabled" direction="input" default="0.0" maximum="1.0"
+            content="other"/>
+      <port name="Enabled" direction="input" default="0.0" maximum="1.0"
+            content="other"/>
+      <port name="Mode" direction="input" default="0.0" maximum="1.0" content="other"/>
+      <port direction="output" content="audio" name="Left"/>
+      <port direction="output" content="audio" name="Right"/>
+      <port direction="input" content="audio" name="Left"/>
+      <port direction="input" content="audio" name="Right"/>
+      <port direction="input" content="midi" name="MIDI input"/>
+    </ports>
+  </plugin>
+</plugins>

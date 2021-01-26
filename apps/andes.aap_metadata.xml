@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugins>
+  <plugin name="Andes_1" category="Synth" author="artfwo" manufacturer="htts://artfwo.net"
+          unique-id="juceaap:416e6473" library="libjuce_jni.so" entrypoint="GetJuceAAPFactory"
+          assets="">
+    <ports>
+      <port name="octaves" direction="input" default="0.0" minimum="1.0"
+            maximum="16.0" content="other"/>
+      <port name="persistence" direction="input" maximum="1.0" content="other"/>
+      <port name="env1att" direction="input" minimum="0.001000000047497451"
+            maximum="9.0" content="other"/>
+      <port name="env1dec" direction="input" minimum="0.001000000047497451"
+            maximum="9.0" content="other"/>
+      <port name="env1sus" direction="input" maximum="1.0" content="other"/>
+      <port name="env1rel" direction="input" minimum="0.001000000047497451"
+            maximum="9.0" content="other"/>
+      <port name="offset" direction="input" default="0.0" maximum="4.0" content="other"/>
+      <port name="warping" direction="input" default="0.0" maximum="1.0"
+            content="other"/>
+      <port direction="output" content="audio" name="Left"/>
+      <port direction="output" content="audio" name="Right"/>
+      <port direction="input" content="midi" name="MIDI input"/>
+    </ports>
+  </plugin>
+</plugins>

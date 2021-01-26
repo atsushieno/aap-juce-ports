@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugins>
+  <plugin name="SARAH" category="Synth" author="your company" manufacturer="www.yourcompany.com"
+          unique-id="juceaap:506a6974" library="libjuce_jni.so" entrypoint="GetJuceAAPFactory"
+          assets="">
+    <ports>
+      <port direction="output" content="audio" name="Left"/>
+      <port direction="output" content="audio" name="Right"/>
+      <port direction="input" content="audio" name="Left"/>
+      <port direction="input" content="audio" name="Right"/>
+      <port direction="input" content="midi" name="MIDI input"/>
+    </ports>
+  </plugin>
+</plugins>
