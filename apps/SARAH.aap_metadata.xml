@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<plugins>
+<plugins xmlns="urn:org.androidaudioplugin.core" xmlns:pp="urn:org.androidaudioplugin.port">
   <plugin name="SARAH" category="Synth" author="your company" manufacturer="www.yourcompany.com"
           unique-id="juceaap:506a6974" library="libjuce_jni.so" entrypoint="GetJuceAAPFactory"
           assets="">
